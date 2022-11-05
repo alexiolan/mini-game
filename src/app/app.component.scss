@@ -1,0 +1,62 @@
+.game-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/bg.png");
+  background-size: cover;
+}
+
+canvas {
+  display: none;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  border: none;
+  outline: none;
+}
+
+body {
+  font-size:16px;
+  margin:0px;
+  padding:0px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background-color:#1bafdb;
+  font-family: Arial;
+}
+
+button {
+  border:none;
+  appearance:none;
+  outline:none;
+  display:inline-block;
+  font-size:1.5em;
+  cursor:pointer;
+  text-decoration:none;
+  padding:12px 48px 12px 48px;
+  border-radius:4px;
+  color:#ffffff;
+  background-color:#1bafdb;
+  border: 2px solid #ffffff;
+}
+button {   transition-duration: 0.4s; }
+button:hover {
+  font-size:1.6em;
+  background-color:#05c46b;
+}
+.screen {
+  color:#ffffff;
+  padding: 20px;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
