@@ -9,12 +9,12 @@ import {AuthService, ConfigService, GameService} from "./core";
 export class AppComponent implements OnInit {
     protected readonly configService = inject(ConfigService);
 
-    private SPEED_PER_MINUTE = 0;
-    private FINISH_SCORE = 0;
-    private giftSpawnTimeMin = 0;
-    private giftSpawnTimeMax = 0;
-    private bubbleSpawnTimeMin = 0;
-    private bubbleSpawnTimeMax = 0;
+    private SPEED_PER_MINUTE = 3;
+    private FINISH_SCORE = 50;
+    private giftSpawnTimeMin = 0.75;
+    private giftSpawnTimeMax = 2;
+    private bubbleSpawnTimeMin = 3;
+    private bubbleSpawnTimeMax = 6;
 
     private lastTime = 0;
     private time = 0;
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     private speedMax = 5;
     private speedMult = 100;
     private score = 1;
-    private progress = 0;
+    private progress = this.score / this.FINISH_SCORE;
 
 
     private nextGiftSpawnTime = 0;
@@ -206,8 +206,8 @@ export class AppComponent implements OnInit {
             this.gameDraw();
         }
         this.lastTime = millis;
+
         window.requestAnimationFrame((data) => {
-            console.log(data);
             this.callbackOnStart(data);
         });
     };
