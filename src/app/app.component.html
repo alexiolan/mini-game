@@ -2,22 +2,33 @@
   <canvas id="catchGame" width="540" height="960"></canvas>
 </div>
 
-<div id='start-screen' class='screen' style='display:block'>
-  <button (click)="gameStart()">Start Game</button>
-</div>
-<div id='gameover-screen' class='screen' style='display:none'>
-  <h1>Game over</h1>
-  <div>
-    <button (click)="gameStart()">Restart</button>
+<div class="screens">
+  <div id='start-screen' class='screen visible'>
+    <button (click)="gameStart()">Начать игру?</button>
   </div>
-  <div>
-    <button onclick="location.href='http://elephant.ro';">Go to site</button>
+  <div id='gameover-screen' class='screen'>
+    <h1>Эх! Не получилось.</h1>
+    <div>
+      <button (click)="gameStart()">Попробовать еще раз и выиграть приз!</button>
+    </div>
+    <div>
+      <a href="https://www.elefant.md">Перейти на сайт Elefant</a>
+    </div>
   </div>
-</div>
-<div id='gamewin-screen' class='screen' style='display:none'>
-  <h1>You won!</h1>
-  <div>
-    <button onclick="location.href='http://elephant.ro';">Claim your gift!</button>
+  <div id='gamewin-screen' class='screen'>
+    <h1>Вы победили</h1>
+    <p>Введите мэил, мы свяжемся и скажем как получить приз</p>
+    <div>
+      <input type="text" [(ngModel)]="userEmail" placeholder="mail@example.com">
+    </div>
+    <button [disabled]="!userEmail" (click)="claimGift()">Забрать подарок!</button>
   </div>
+  <div id='reward-screen' class='screen'>
+    <h1>Ваш подарок</h1>
+    <p>{{rewardTitle}}</p>
+    <a href="https://www.elefant.md">Перейти на сайт Elefant</a>
+    <p>сделай скрин и похвастайся победой в Инстаграм!</p>
+  </div>
+  <div class="backdrop"></div>
 </div>
 

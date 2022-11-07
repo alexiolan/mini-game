@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("../assets/bg.png");
+  background-image: url("../assets/images/bg.png");
   background-size: cover;
 }
 
@@ -28,11 +28,9 @@ body {
   flex-direction:column;
   align-items:center;
   background-color:#1bafdb;
-  font-family: Arial;
 }
 
-button {
-  border:none;
+button, a {
   appearance:none;
   outline:none;
   display:inline-block;
@@ -44,19 +42,55 @@ button {
   color:#ffffff;
   background-color:#1bafdb;
   border: 2px solid #ffffff;
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: default;
+  }
 }
-button {   transition-duration: 0.4s; }
-button:hover {
-  font-size:1.6em;
-  background-color:#05c46b;
+
+.screens {
+  .screen {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px 24px;
+    color: black;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    display: none;
+  }
+
+  &:has(.screen.visible) {
+    .backdrop {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      inset: 0;
+      background-color: #00000040;
+      z-index: 1000;
+    }
+  }
 }
-.screen {
-  color:#ffffff;
-  padding: 20px;
-  position: fixed;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+
+.visible {
+  display: block !important;
+}
+
+input {
+  min-width: 120px;
+  line-height: 16px;
+  width: 220px;
+  border-radius: 5px;
+  border: 1px solid #5d6268;
+  font-size: 16px;
+  padding: 15px;
+  margin-bottom: 20px;
 }
