@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
 
     private gameActive = false;
     private gameFinished = false;
-    public gameWidth = 0;
-    public gameHeight = 0;
+    private gameWidth = 480;
+    private gameHeight = 480;
     private gameScale = 1;
 
     private assets = [
@@ -74,23 +74,10 @@ export class AppComponent implements OnInit {
     public rewardTitle: string = "";
 
     constructor(private gameService: GameService, private authService: AuthService) {
-        this.authService.setAccessToken(this.configService.config.api.token);
+        this.authService.setAccessToken(this.configService.config.api.token)
     }
 
     ngOnInit(): void {
-        const gameContainer = document.getElementById("canvasContainer");
-
-        if (!gameContainer) return;
-        this.gameWidth = +gameContainer.offsetWidth;
-        this.gameHeight = +gameContainer.offsetHeight;
-
-        this.player = {
-            x: this.gameWidth / 2,
-            y: 0,
-            w: 72,
-            h: 72
-        };
-
         this.gameService.getSettings().then(settings => {
             this.SPEED_PER_MINUTE = settings.SPEED_PER_MINUTE;
             this.FINISH_SCORE = settings.FINISH_SCORE;
@@ -113,9 +100,9 @@ export class AppComponent implements OnInit {
             this.ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
 
         window.onload = window.onresize = () => {
-            // this.gameWidth = +gameContainer.offsetWidth;
-            // this.gameHeight = +gameContainer.offsetHeight;
-            //this.updateGameSize();
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            this.updateGameSize();
         }
     }
 
