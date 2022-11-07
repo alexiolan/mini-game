@@ -99,6 +99,10 @@ export class AppComponent implements OnInit {
         if (ctx != null)
             this.ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
 
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.updateGameSize();
+
         window.onload = window.onresize = () => {
             this.canvas.width = window.innerWidth;
             this.canvas.height = window.innerHeight;
