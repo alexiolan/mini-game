@@ -1,48 +1,24 @@
-.game-container {
-  position: fixed;
+.game-container,
+canvas {
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #73D6FC;
-  background-image: url("../assets/images/bg.png");
-  background-size: cover;
 }
 
 canvas {
   display: none;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin:auto;
-  border: none;
-  outline: none;
-}
-
-body {
-  font-size:16px;
-  margin:0px;
-  padding:0px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  background-color:#1bafdb;
 }
 
 button, a {
-  appearance:none;
-  outline:none;
-  display:inline-block;
-  font-size:1.5em;
-  cursor:pointer;
-  text-decoration:none;
-  padding:12px 48px 12px 48px;
-  border-radius:4px;
-  color:#ffffff;
-  background-color:#1bafdb;
-  border: 2px solid #ffffff;
+  display: block;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
 
   &[disabled] {
     opacity: 0.5;
@@ -52,37 +28,41 @@ button, a {
 
 .screens {
   .screen {
-    background: #ffffff;
     border-radius: 8px;
     overflow: hidden;
     padding: 20px 24px;
     color: black;
-    position: fixed;
+    position: absolute;
     text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1001;
     display: none;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      height: 70px;
+    }
   }
 
-  &:has(.screen.visible) {
-    .backdrop {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      inset: 0;
-      background-color: #00000040;
-      z-index: 1000;
-    }
+  #start-screen {
+    top: 60%;
+  }
+
+  #reward-screen,
+  #gamewin-screen {
+    top: 65%;
+  }
+
+  #gameover-screen {
+    top: 55%;
   }
 }
 
 .visible {
-  display: block !important;
+  display: flex !important;
 }
 
 input {
@@ -94,4 +74,27 @@ input {
   font-size: 16px;
   padding: 15px;
   margin-bottom: 20px;
+}
+
+
+.background {
+  aspect-ratio: 9/16;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100vh;
+
+  &:has(#start-screen.visible) {
+    background-image: url("/mini-game/assets/images/ecran_1.png");
+  }
+
+  &:has(#gamewin-screen.visible),
+  &:has(#reward-screen.visible)  {
+    background-image: url("/mini-game/assets/images/ecran_2.png");
+  }
+
+  &:has(#gameover-screen.visible) {
+    background-image: url("/mini-game/assets/images/ecran_3.png");
+  }
 }

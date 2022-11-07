@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
 
     private gameActive = false;
     private gameFinished = false;
-    private gameWidth = 480;
-    private gameHeight = 480;
+    public gameWidth = 0;
+    public gameHeight = 0;
     private gameScale = 1;
 
     private assets = [
@@ -43,6 +43,8 @@ export class AppComponent implements OnInit {
         'assets/images/gift_1.png',
         'assets/images/gift_2.png',
         'assets/images/gift_3.png',
+        'assets/images/gift_4.png',
+        'assets/images/gift_5.png',
         'assets/images/gift_icon.png',
         'assets/images/progress_bar_bg.png',
         'assets/images/progress_bar.png',
@@ -72,10 +74,23 @@ export class AppComponent implements OnInit {
     public rewardTitle: string = "";
 
     constructor(private gameService: GameService, private authService: AuthService) {
-        this.authService.setAccessToken(this.configService.config.api.token)
+        this.authService.setAccessToken(this.configService.config.api.token);
     }
 
     ngOnInit(): void {
+        const gameContainer = document.getElementById("canvasContainer");
+
+        if (!gameContainer) return;
+        this.gameWidth = +gameContainer.offsetWidth;
+        this.gameHeight = +gameContainer.offsetHeight;
+
+        this.player = {
+            x: this.gameWidth / 2,
+            y: 0,
+            w: 72,
+            h: 72
+        };
+
         this.gameService.getSettings().then(settings => {
             this.SPEED_PER_MINUTE = settings.SPEED_PER_MINUTE;
             this.FINISH_SCORE = settings.FINISH_SCORE;
@@ -98,9 +113,9 @@ export class AppComponent implements OnInit {
             this.ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
 
         window.onload = window.onresize = () => {
-            this.canvas.width = window.innerWidth;
-            this.canvas.height = window.innerHeight;
-            this.updateGameSize();
+            // this.gameWidth = +gameContainer.offsetWidth;
+            // this.gameHeight = +gameContainer.offsetHeight;
+            //this.updateGameSize();
         }
     }
 
@@ -256,7 +271,7 @@ export class AppComponent implements OnInit {
         const av = this.randomFloat(-2, 2);
 
         const e = {
-            image: this.images['assets/images/gift_' + this.randomInt(1, 4) + '.png'],
+            image: this.images['assets/images/gift_' + this.randomInt(1, 6) + '.png'],
             x: x,
             y: -h,
             r: 0,
