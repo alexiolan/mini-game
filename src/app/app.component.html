@@ -5,18 +5,18 @@
 <div class="screens">
   <div id='start-screen' class='screen visible'>
     <button (click)="gameStart()">
-      <img src="/assets/images/start_game.png">
+      <img src="/mini-game/assets/images/start_game.png">
     </button>
   </div>
   <div id='gameover-screen' class='screen'>
     <div>
       <button (click)="gameStart()">
-        <img src="/assets/images/restart_btn.png">
+        <img src="/mini-game/assets/images/restart_btn.png">
       </button>
     </div>
     <div>
       <a href="https://www.elefant.md">
-        <img src="/assets/images/go_back_btn.png">
+        <img src="/mini-game/assets/images/go_back_btn.png">
       </a>
     </div>
   </div>
@@ -25,18 +25,18 @@
       <input type="text" [(ngModel)]="userEmail" placeholder="mail@example.com">
     </div>
     <button [disabled]="!userEmail" (click)="claimGift()">
-      <img src="/assets/images/pick.png">
+      <img src="/mini-game/assets/images/pick.png">
     </button>
   </div>
   <div id='reward-screen' class='screen'>
     <a href="https://www.elefant.md">
-      <img src="/assets/images/go_back_btn.png">
+      <img src="/mini-game/assets/images/go_back_btn.png">
     </a>
   </div>
   <div class="backdrop">
-    <img class="bg-img ecran_1" src="/assets/images/ecran_1.png">
-    <img class="bg-img ecran_2" src="/assets/images/ecran_2.png">
-    <img class="bg-img ecran_3" src="/assets/images/ecran_3.png">
+    <img class="bg-img ecran_1" src="/mini-game/assets/images/ecran_1.png">
+    <img class="bg-img ecran_2" src="/mini-game/assets/images/ecran_2.png">
+    <img class="bg-img ecran_3" src="/mini-game/assets/images/ecran_3.png">
   </div>
 </div>
 
