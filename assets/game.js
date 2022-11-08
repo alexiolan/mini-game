@@ -34,6 +34,7 @@ let gameScale = 1;
 let bgImageWidth = 1080;
 let bgImageHeight = 1920;
 
+let container = null;
 let canvas = null;
 let ctx = null;
 
@@ -134,17 +135,18 @@ const callback = function (millis) {
 };
 
 function initGame() {
+    container = document.getElementById("catchContainer");
     canvas = document.getElementById("catchGame");
     ctx = canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
 
     updateGameSize();
 
     window.onresize = function () {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
 
         updateGameSize();
     };
