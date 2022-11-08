@@ -169,7 +169,7 @@ function createGift() {
     const av = randomFloat(-100, 100);
 
     const e = {
-        image: images['mini-game/assets/images/gift_' + randomInt(1, 6) + '.png'],
+        image: images['assets/images/gift_' + randomInt(1, 6) + '.png'],
         x: x,
         y: -h,
         r: 0,
@@ -188,7 +188,7 @@ function createBubble() {
     const v = 0.65;
 
     const e = {
-        image: images['mini-game/assets/images/bubble.png'],
+        image: images['assets/images/bubble.png'],
         x: x,
         startX: x,
         y: -h,
@@ -230,7 +230,7 @@ function gameDraw() {
 
     // ctx.drawImage(images['assets/images/bg.png'], 0, 0, canvas.width, canvas.height);
     // ctx.drawImage(images['assets/images/bg.png'], 0, 0, canvas.width, gameHeight*gameScale);
-    ctx.drawImage(images['mini-game/assets/images/bg.png'], 0, 0, bgImageWidth, bgImageHeight);
+    ctx.drawImage(images['assets/images/bg.png'], 0, 0, bgImageWidth, bgImageHeight);
     // ctx.drawImage(images['assets/images/bg2.png'], 0, 0, canvas.width, canvas.height);
 
     ctx.save();
@@ -315,7 +315,7 @@ function drawElements(elements) {
 }
 
 function drawPlayer() {
-    ctx.drawImage(images['mini-game/assets/images/player.png'], player.x - player.w / 2, player.y, player.w, player.h);
+    ctx.drawImage(images['assets/images/player.png'], player.x - player.w / 2, player.y, player.w, player.h);
     // ctx.fillRect(player.x, player.h, player.w, player.h);
 }
 
@@ -324,8 +324,8 @@ function drawLives() {
     let oy = 16;
     const imgSize = 48;
     const mrg = -20;
-    const heart = images['mini-game/assets/images/heart.png'];
-    const heartBg = images['mini-game/assets/images/heart_bg.png'];
+    const heart = images['assets/images/heart.png'];
+    const heartBg = images['assets/images/heart_bg.png'];
     let img = heart;
 
     for (let i = 0; i < livesMax; i++) {
@@ -339,8 +339,8 @@ function drawLives() {
 }
 
 function drawProgress() {
-    const prBg = images['mini-game/assets/images/progress_bar_bg.png'];
-    const pr = images['mini-game/assets/images/progress_bar.png'];
+    const prBg = images['assets/images/progress_bar_bg.png'];
+    const pr = images['assets/images/progress_bar.png'];
     const oy = 28;
     const pbgW = gameWidth / 2;
     const ph = 24;
@@ -354,7 +354,7 @@ function drawProgress() {
 
     ctx.drawImage(pr, capSize + sPos, oy + capSize, pw, ph - capSize * 2);
 
-    ctx.drawImage(images['mini-game/assets/images/gift_icon.png'], gameWidth - 80, 16, 48, 48);
+    ctx.drawImage(images['assets/images/gift_icon.png'], gameWidth - 80, 16, 48, 48);
 }
 
 function removeLife(amount) {
