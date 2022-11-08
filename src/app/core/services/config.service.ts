@@ -11,7 +11,7 @@ export class ConfigService {
     }
 
     load() {
-        return lastValueFrom(this.http.get<IConfig>('/mini-game/assets/config.json'))
+        return lastValueFrom(this.http.get<IConfig>('/assets/config.json'))
             .then(data => {
                 this.config = data;
             })

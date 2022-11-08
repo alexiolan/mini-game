@@ -5,51 +5,51 @@
 <div class="screens">
   <div id='start-screen' class='screen visible'>
     <div class="content">
-      <img class="images" src="/mini-game/assets/images/starting-header.png">
+      <img class="images" src="/assets/images/starting-header.png">
     </div>
     <button class="btn" [disabled]="!canStart" (click)="gameStart()">
-      <img src="/mini-game/assets/images/start_game.png">
+      <img src="/assets/images/start_game.png">
     </button>
     <a class="btn" href="https://www.elefant.ro">
-      <img src="/mini-game/assets/images/go_back_orange.png">
+      <img src="/assets/images/go_back_orange.png">
     </a>
     <div class="content">
-      <img class="images" src="/mini-game/assets/images/terms.png">
+      <img class="images" src="/assets/images/terms.png">
     </div>
   </div>
   <div id='gameover-screen' class='screen '>
     <div class="content">
-      <img class="images" src="/mini-game/assets/images/game-over-header.png">
+      <img class="images" src="/assets/images/game-over-header.png">
     </div>
     <div>
       <button class="btn" (click)="gameStart()">
-        <img src="/mini-game/assets/images/restart_btn.png">
+        <img src="/assets/images/restart_btn.png">
       </button>
     </div>
     <div>
       <a class="btn" href="https://www.elefant.ro">
-        <img src="/mini-game/assets/images/go_back_btn.png">
+        <img src="/assets/images/go_back_btn.png">
       </a>
     </div>
   </div>
   <div id='gamewin-screen' class='screen '>
     <div class="content">
-      <img class="images" src="/mini-game/assets/images/game-win-header.png">
+      <img class="images" src="/assets/images/game-win-header.png">
     </div>
     <div>
       <input type="text" [(ngModel)]="userEmail" placeholder="mail@example.com">
     </div>
     <button class="btn" [disabled]="!userEmail" (click)="claimGift()">
-      <img src="/mini-game/assets/images/go_back_btn.png">
+      <img src="/assets/images/go_back_btn.png">
     </button>
     <div class="content">
-      <img class="images" src="/mini-game/assets/images/game-win-footer.png">
+      <img class="images" src="/assets/images/game-win-footer.png">
     </div>
   </div>
   <div class="backdrop">
-    <img class="bg-img ecran_1" src="/mini-game/assets/images/ecran_1.png">
-    <img class="bg-img ecran_2" src="/mini-game/assets/images/ecran_2.png">
-    <img class="bg-img ecran_3" src="/mini-game/assets/images/ecran_3.png">
+    <img class="bg-img ecran_1" src="/assets/images/ecran_1.png">
+    <img class="bg-img ecran_2" src="/assets/images/ecran_2.png">
+    <img class="bg-img ecran_3" src="/assets/images/ecran_3.png">
   </div>
 </div>
 
