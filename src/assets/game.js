@@ -9,6 +9,7 @@ let bubbleSpawnTimeMax = 6;
 
 let giftSize = 84;
 let bubbleSize = 54;
+let bubbleSpeed = 0.65;
 let playerSize = 180;
 
 let lastTime = 0;
@@ -77,8 +78,8 @@ let bubblesToRemove = [];
 let player = {
     x: gameWidth / 2,
     y: 0,
-    w: playerSize, // 72
-    h: playerSize // 72
+    w: playerSize,
+    h: playerSize
 };
 
 function randomFloat(min, max) {
@@ -185,7 +186,7 @@ function createBubble() {
     const w = bubbleSize;
     const h = bubbleSize;
     const x = randomInt(w, gameWidth - w);
-    const v = 0.65;
+    const v = bubbleSpeed;
 
     const e = {
         image: images['assets/images/bubble.png'],
@@ -205,9 +206,7 @@ function gameUpdate(dt) {
     if (!gameActive) return;
 
     time += dt;
-    // speed += SPEED_PER_MINUTE/(60*60);
     speed += (SPEED_PER_MINUTE / 60) * dt;
-    // console.log(speed);
 
     if (speed > speedMax) speed = speedMax;
 
@@ -228,10 +227,7 @@ function gameUpdate(dt) {
 function gameDraw() {
     if (!gameActive) return;
 
-    // ctx.drawImage(images['assets/images/bg.png'], 0, 0, canvas.width, canvas.height);
-    // ctx.drawImage(images['assets/images/bg.png'], 0, 0, canvas.width, gameHeight*gameScale);
     ctx.drawImage(images['assets/images/bg.png'], 0, 0, bgImageWidth, bgImageHeight);
-    // ctx.drawImage(images['assets/images/bg2.png'], 0, 0, canvas.width, canvas.height);
 
     ctx.save();
     ctx.scale(gameScale, gameScale);
@@ -252,7 +248,6 @@ function updateGifts(dt) {
         e.r += e.av * dt;
 
         if (playerCollideWithElement(e)) {
-            // score++;
             giftsToRemove.push(e);
             addScore(1);
         }
@@ -341,18 +336,34 @@ function drawLives() {
 function drawProgress() {
     const prBg = images['assets/images/progress_bar_bg.png'];
     const pr = images['assets/images/progress_bar.png'];
-    const oy = 28;
+    const oy = 20;
     const pbgW = gameWidth / 2;
-    const ph = 24;
-    const pw = pbgW * progress;
+    const ph = 40;
     const sPos = gameWidth / 2 - pbgW / 2 + 16;
-    const capSize = ph / 8;
 
-    ctx.drawImage(prBg, 17, 0, 30, 128, capSize + sPos, oy, pbgW, ph);
-    ctx.drawImage(prBg, 0, 0, 16, 128, sPos, oy, capSize, ph);
-    ctx.drawImage(prBg, 48, 0, 16, 128, sPos + pbgW + capSize, oy, capSize, ph);
+    const imgWidth = 512;
+    const imgHeight = 256;
+    const sliceSize = 235;
+    const sliceMidSize = imgWidth-sliceSize*2;
 
-    ctx.drawImage(pr, capSize + sPos, oy + capSize, pw, ph - capSize * 2);
+    const psc = ph / imgHeight;
+
+    const capSize = sliceSize * psc;
+    const baseSize = pbgW - capSize*2;
+    const pOffsetX = 32*psc;
+    const pMarginY = 42*psc;
+
+    const pw = (pbgW-pOffsetX*2) * progress;
+
+    ctx.fillStyle = "#ffffff44";
+    ctx.fillRect(sPos+pOffsetX, oy + pMarginY, pbgW-pOffsetX*2, ph-pMarginY*2);
+    ctx.fillStyle = "#ffffffff";
+
+    ctx.drawImage(pr, sPos+pOffsetX, oy + pMarginY, pw, ph-pMarginY*2);
+
+    ctx.drawImage(prBg, sliceSize, 0, sliceMidSize, imgHeight, sPos+capSize-1, oy, baseSize+2, ph);
+    ctx.drawImage(prBg, 0, 0, sliceSize, imgHeight, sPos, oy, capSize, ph);
+    ctx.drawImage(prBg, sliceSize+sliceMidSize, 0, sliceSize, imgHeight, sPos + pbgW-capSize, oy, capSize, ph);
 
     ctx.drawImage(images['assets/images/gift_icon.png'], gameWidth - 80, 16, 48, 48);
 }
@@ -376,8 +387,7 @@ function removeScore(amount) {
 
 function playerCollideWithElement(e) {
     // return e.y < (player.y+player.h/3) && collide(e.x, e.y, e.w/2, player.x, player.y+player.h, player.w/2, player.h/2);
-    return e.y < (player.y + player.h / 3) && collide(e.x, e.y, e.w / 2, player.x, player.y + player.h * 0.9, player.w * 0.3, player.h / 2);
-    // return collide(e.x, e.y, e.w/2, player.x, player.y+player.h, player.w/2, player.h/2);
+    return e.y < (player.y + player.h / 2.8) && collide(e.x, e.y, e.w / 2, player.x, player.y + player.h * 0.9, player.w * 0.3, player.h / 2);
 }
 
 function collide(cx, cy, cr, bx, by, bhw, bhh) {
@@ -427,6 +437,9 @@ function setConfigs(conf) {
     if (conf.bubbleSize)
         bubbleSize = conf.bubbleSize;
 
+    if (conf.bubbleSpeed)
+        bubbleSpeed = conf.bubbleSpeed;
+
     if (conf.playerSize)
         playerSize = conf.playerSize;
 }
@@ -462,11 +475,6 @@ function gameOver() {
 
     document.dispatchEvent(event);
 
-    // this.toggleScreen('start-screen',false);
-    // // this.toggleScreen('catchGame',false);
-    // this.toggleScreen('gamewin-screen',false);
-    // this.toggleScreen('gameover-screen',true);
-
     gameActive = false;
 }
 
@@ -474,11 +482,6 @@ function gameWin() {
     const event = new Event('gameWin');
 
     document.dispatchEvent(event);
-
-    // this.toggleScreen('start-screen',false);
-    // // this.toggleScreen('catchGame',false);
-    // this.toggleScreen('gamewin-screen',true);
-    // this.toggleScreen('gameover-screen',false);
 
     gameActive = false;
 }

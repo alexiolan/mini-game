@@ -8,4 +8,5 @@ export interface ISettings {
     giftSize: number,
     bubbleSize: number,
     playerSize: number,
+    bubbleSpeed: number
 }
