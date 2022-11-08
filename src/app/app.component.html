@@ -4,7 +4,7 @@
 
 <div class="screens">
   <div id='start-screen' class='screen visible'>
-    <button (click)="gameStart()">
+    <button [disabled]="!canStart" (click)="gameStart()">
       <img src="/mini-game/assets/images/start_game.png">
     </button>
   </div>

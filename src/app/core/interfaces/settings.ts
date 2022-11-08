@@ -5,4 +5,7 @@ export interface ISettings {
     giftSpawnTimeMax: number,
     bubbleSpawnTimeMin: number,
     bubbleSpawnTimeMax: number,
+    giftSize: number,
+    bubbleSize: number,
+    playerSize: number,
 }
