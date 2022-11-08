@@ -52,19 +52,19 @@ function updateGameSize() {
 }
 
 let assets = [
-    'mini-game/assets/images/bg.png',
-    'mini-game/assets/images/player.png',
-    'mini-game/assets/images/gift_1.png',
-    'mini-game/assets/images/gift_2.png',
-    'mini-game/assets/images/gift_3.png',
-    'mini-game/assets/images/gift_4.png',
-    'mini-game/assets/images/gift_5.png',
-    'mini-game/assets/images/gift_icon.png',
-    'mini-game/assets/images/progress_bar_bg.png',
-    'mini-game/assets/images/progress_bar.png',
-    'mini-game/assets/images/heart_bg.png',
-    'mini-game/assets/images/heart.png',
-    'mini-game/assets/images/bubble.png'
+    'assets/images/bg.png',
+    'assets/images/player.png',
+    'assets/images/gift_1.png',
+    'assets/images/gift_2.png',
+    'assets/images/gift_3.png',
+    'assets/images/gift_4.png',
+    'assets/images/gift_5.png',
+    'assets/images/gift_icon.png',
+    'assets/images/progress_bar_bg.png',
+    'assets/images/progress_bar.png',
+    'assets/images/heart_bg.png',
+    'assets/images/heart.png',
+    'assets/images/bubble.png'
 ];
 
 let images = {};
