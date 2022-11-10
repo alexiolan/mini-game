@@ -30,7 +30,6 @@ button, a {
   .screen {
     border-radius: 8px;
     overflow: hidden;
-    padding: 20px 24px;
     color: black;
     position: absolute;
     text-align: center;
@@ -42,22 +41,16 @@ button, a {
     flex-direction: column;
     align-items: center;
 
-    img {
-      height: 70px;
+    .btn {
+      margin: 5px 0;
+      img {
+        height: 70px;
+      }
     }
-  }
 
-  #start-screen {
-    top: 60%;
-  }
-
-  #reward-screen,
-  #gamewin-screen {
-    top: 70%;
-  }
-
-  #gameover-screen {
-    top: 55%;
+    .content {
+      margin: 25px 0;
+    }
   }
 
   .bg-img {
@@ -100,9 +93,15 @@ input {
   min-width: 120px;
   line-height: 16px;
   width: 220px;
-  border-radius: 50px;
+  border-radius: 15px;
   border: 1px solid #5d6268;
-  font-size: 16px;
-  padding: 15px;
   margin-bottom: 20px;
+  padding: 20px 30px;
+  font-size: 20px;
+  outline: none;
+}
+
+.images {
+  width: 100% !important;
+  height: auto !important;
 }

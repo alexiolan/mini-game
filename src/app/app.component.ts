@@ -37,7 +37,8 @@ export class AppComponent implements OnInit {
             this.rewardTitle = res.title;
 
             this.toggleScreen('gamewin-screen', false);
-            this.toggleScreen('reward-screen', true);
+
+            window.location.href = "https://www.elefant.ro";
         })
     }
 

@@ -4,34 +4,47 @@
 
 <div class="screens">
   <div id='start-screen' class='screen visible'>
-    <button [disabled]="!canStart" (click)="gameStart()">
+    <div class="content">
+      <img class="images" src="/mini-game/assets/images/starting-header.png">
+    </div>
+    <button class="btn" [disabled]="!canStart" (click)="gameStart()">
       <img src="/mini-game/assets/images/start_game.png">
     </button>
+    <a class="btn" href="https://www.elefant.ro">
+      <img src="/mini-game/assets/images/go_back_orange.png">
+    </a>
+    <div class="content">
+      <img class="images" src="/mini-game/assets/images/terms.png">
+    </div>
   </div>
-  <div id='gameover-screen' class='screen'>
+  <div id='gameover-screen' class='screen '>
+    <div class="content">
+      <img class="images" src="/mini-game/assets/images/game-over-header.png">
+    </div>
     <div>
-      <button (click)="gameStart()">
+      <button class="btn" (click)="gameStart()">
         <img src="/mini-game/assets/images/restart_btn.png">
       </button>
     </div>
     <div>
-      <a href="https://www.elefant.md">
+      <a class="btn" href="https://www.elefant.ro">
         <img src="/mini-game/assets/images/go_back_btn.png">
       </a>
     </div>
   </div>
-  <div id='gamewin-screen' class='screen'>
+  <div id='gamewin-screen' class='screen '>
+    <div class="content">
+      <img class="images" src="/mini-game/assets/images/game-win-header.png">
+    </div>
     <div>
       <input type="text" [(ngModel)]="userEmail" placeholder="mail@example.com">
     </div>
-    <button [disabled]="!userEmail" (click)="claimGift()">
-      <img src="/mini-game/assets/images/pick.png">
-    </button>
-  </div>
-  <div id='reward-screen' class='screen'>
-    <a href="https://www.elefant.md">
+    <button class="btn" [disabled]="!userEmail" (click)="claimGift()">
       <img src="/mini-game/assets/images/go_back_btn.png">
-    </a>
+    </button>
+    <div class="content">
+      <img class="images" src="/mini-game/assets/images/game-win-footer.png">
+    </div>
   </div>
   <div class="backdrop">
     <img class="bg-img ecran_1" src="/mini-game/assets/images/ecran_1.png">
